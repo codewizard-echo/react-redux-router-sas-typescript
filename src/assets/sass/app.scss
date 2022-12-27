@@ -1,0 +1,12 @@
+@import "variables";
+@import "mixins";
+
+@import "~bootstrap/scss/bootstrap.scss";
+
+body {
+	background-color: $color-bg;
+}
+
+button {
+	@include mixin-button;
+}
