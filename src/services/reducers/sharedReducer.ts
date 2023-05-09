@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export interface UserState {
+export interface RootState {
 	loading: number;
 }
 
-const initialState: UserState = {
+const initialState: RootState = {
 	loading: 0, 
 };
 
@@ -16,11 +16,20 @@ export const sharedSlice = createSlice({
 			state.loading ++;
 		},
 		hideLoading: (state) => {
-			if (state.loading) {
+			if (state.loading <= 0) {
+				state.loading = 0;
+			} else {
 				state.loading --;
 			}
 		},
 	},
 });
+
+export const {
+  showLoading,
+  hideLoading,
+} = sharedSlice.actions;
+
+export const getLoadingStatus = (state: RootState) => state.shared.loading;
 
 export default sharedSlice.reducer;

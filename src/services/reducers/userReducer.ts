@@ -1,13 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { login } from '../../apis/users';
+import { login, UserInfo } from '../../apis/users';
 import { RootState } from '../store';
-
-export interface UserInfo {
-	firstname: string;
-	lastname: string;
-	email: string;
-}
 
 export interface UserState {
 	userInfo: UserInfo | null;
@@ -22,7 +16,7 @@ const initialState: UserState = {
 export const userLogin = createAsyncThunk(
 	'user/login',
 	async () => {
-		const response = await login('a', 'a') as any;
+		const response = await login('a', 'a');
 		return response.data;
 	}
 );
